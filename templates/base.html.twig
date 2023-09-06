@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="{{ asset('style/CSS/bootstrap.min.css') }}"> {% block stylesheets %}{% endblock %}
-		<link rel="stylesheet" href="{{ asset('style/CSS/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('style/CSS/Style.css') }}">
 
 
 		<script src="{{ asset('style/JS/bootstrap.min.js') }}" defer></script>
@@ -40,8 +40,7 @@
 				</div>
 			</nav>
 		{% endblock %}
-		{% block body %}{% endblock %}
-		<footer>
+		{% block body %}{% endblock %}{% block footer %}<footer>
 			<ul class="list-group list-group-horizontal">
 				<li class="list-group-item">An item</li>
 				<li class="list-group-item">A second item</li>
@@ -52,26 +51,6 @@
 				<li class="list-group-item">A second item</li>
 				<li class="list-group-item">A third item</li>
 			</ul>
-			<ul class="list-group list-group-horizontal-md">
-				<li class="list-group-item">An item</li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
-			</ul>
-			<ul class="list-group list-group-horizontal-lg">
-				<li class="list-group-item">An item</li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
-			</ul>
-			<ul class="list-group list-group-horizontal-xl">
-				<li class="list-group-item">An item</li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
-			</ul>
-			<ul class="list-group list-group-horizontal-xxl">
-				<li class="list-group-item">An item</li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
-			</ul>
-		</footer>
+		</footer>{% endblock %}
 	</body>
 </html>

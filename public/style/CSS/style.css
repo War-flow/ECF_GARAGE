@@ -1,10 +1,67 @@
+.form {
+  background-color: #F2F2F2;
+  border-radius: 5%;
+  padding: 75px;
+}
+
+.d-block {
+  border-radius: 10%;
+}
+
+.cards {
+  background-color: #F0EEE9;
+  color: #27C7D4;
+}
+
+.txt {
+  font-family: Trebuchet MS;
+}
+
+.bt1 {
+  color: #D92332;
+  font-family: Géorgie;
+}
+
+.bt1:hover {
+  color: #D9777F;
+}
+
+.nav {
+  background-color: #F2F2F2;
+}
+
+.btn {
+  color: #262526;
+  background-color: #D92332;
+}
+
+.btn:hover {
+  color: #262526;
+  background-color: #D9777F;
+}
+
+.btm {
+  color: #262526;
+  background-color: #D92332;
+
+}
+
+.btm:hover {
+  color: #262526;
+  background-color: #D9777F;
+}
+
+.img {
+  background-image: url(../upload/Cars.jpg);
+}
+
 @media only screen and (min-device-width: 400px) {
   .img {
-    background-image: url(../upload/jay-wennington-N_Y88TWmGwA-unsplash.jpg);
+    background-image: url(../upload/Cars.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 100%;
-    height: 770px;
+    height: 1000px;
   }
 
 } 
