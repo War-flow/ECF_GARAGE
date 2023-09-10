@@ -4,6 +4,11 @@
   padding: 75px;
 }
 
+.form-control {
+  background-color: #a59697;
+  border-color: #000000;
+}
+
 .d-block {
   border-radius: 10%;
 }

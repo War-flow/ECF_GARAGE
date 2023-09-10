@@ -2,7 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Admin;
+use App\Entity\User;
+use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -18,10 +19,11 @@ class Userfixtures extends Fixture
     }
     public function load(ObjectManager $manager): void
     {
-        // On crée le compte administateur
-        $admin = new Admin();
+         //On crée le compte administateur
+        $admin = new Users();
         $admin->setEmail('quai_hote@demo.fr');
-        $admin->setPassword($this->passwordEncoder->hashPassword($admin, 'Blue-flower28++'));
+        $admin->setPassword($this->passwordEncoder->hashPassword($admin,'lopo97300'));
+        $admin->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($admin);
 

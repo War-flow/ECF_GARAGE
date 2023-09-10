@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block body %}
+	<body class='img'>
+		<section class='form container-sm position-absolute top-50 start-50 translate-middle'>
+			<div class="row">
+				<div class="col">
+					<h1>Inscription</h1>
+
+					{{ form_errors(registrationForm) }}
+
+					{{ form_start(registrationForm) }}
+					{{ form_row(registrationForm.email) }}
+					{{ form_row(registrationForm.plainPassword) }}
+
+					<button type="submit" class="btn mt-3">Inscrire</button>
+
+					{{ form_end(registrationForm) }}
+				</div>
+			</div>
+		</section>
+	</body>
+{% endblock %}
+{% block footer %}{% endblock %}
