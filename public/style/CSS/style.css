@@ -9,6 +9,11 @@
   border-color: #000000;
 }
 
+.bts:hover {
+  color: #262526;
+  background-color: #D9777F;
+}
+
 .d-block {
   border-radius: 10%;
 }
@@ -24,6 +29,18 @@
 
 .bt1 {
   color: #D92332;
+  font-family: Géorgie;
+}
+
+.bt2 {
+  color: #262526;
+  background-color: #D92332;
+  font-family: Géorgie;
+}
+
+.bt2:hover  {
+  color: #262526;
+  background-color: #D92332;
   font-family: Géorgie;
 }
 
