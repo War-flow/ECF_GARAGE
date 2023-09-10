@@ -56,13 +56,39 @@
 		</body>
 	</html>
 </div></nav>{% endblock %}{% block body %}{% endblock %}{% block footer %}<footer>
-<ul class="list-group list-group-horizontal">
-	<li class="list-group-item">An item</li>
-	<li class="list-group-item">A second item</li>
-	<li class="list-group-item">A third item</li>
-</ul>
-<ul class="list-group list-group-horizontal-sm">
-	<li class="list-group-item">An item</li>
-	<li class="list-group-item">A second item</li>
-	<li class="list-group-item">A third item</li>
-</ul></footer>{% endblock %}</body></html>
+<div class="d-inline-flex gap-1">
+  <button class="btn btn-primary " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Horaires
+  </button>
+</div>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+	{% for footer in footers.getfooter %}
+		<ul>
+	{# Boucle footer horaire jours #}
+	<li class="list-group-item txt text-center border-1 fw-bold container-fluid">
+		<h3>{{footer.days}}</h3>
+	</li>
+
+	{# Boucle footer horaire matin #}
+	{% if footer.AMHO == 0 or footer.AMHC == 0 %}
+		<li class="list-group-item txt text-center border-2 container-fluid">
+			Matin : Fermé</li>
+	{% else  %}
+		<li class="list-group-item txt text-center border-2 container-fluid">
+			Matin :
+			{{footer.AMHO}}h - {{footer.AMHC}}h</li>
+	{% endif %}
+
+	{# Boucle footer horaire soir #}
+	{% if footer.PMHO == 0 or footer.PMHC == 0 %}
+		<li class="list-group-item txt text-center border-2 container-fluid">
+			Matin : Fermé</li>
+	{% else  %}
+		<li class="list-group-item txt text-center border-2 container-fluid">Soir :
+			{{footer.PMHO}}h - {{footer.PMHC}}h</li>
+	{% endif %}
+		</ul>
+	{% endfor %}
+  </div>
+</div></footer>{% endblock %}</body></html>
