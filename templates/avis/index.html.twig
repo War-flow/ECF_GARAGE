@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AvisController!{% endblock %}
+{% block title %}Vos Avis!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/DEV/htdocs/app/ECF_GARAGE/src/Controller/AvisController.php'|file_link(0) }}">src/Controller/AvisController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/DEV/htdocs/app/ECF_GARAGE/templates/avis/index.html.twig'|file_link(0) }}">templates/avis/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+{% for a in avis %}
+	<div class="card">
+		<div class="card-header">
+			{{a.name}}
+		</div>
+		<div class="card-body">
+			<blockquote class="blockquote mb-0">
+				<p>{{a.message}}</p>
+				{% if a.note == 1 %}
+					<footer class="blockquote-footer">
+						<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+					</footer>
+				{% elseif  a.note == 2 %}
+				<footer class="blockquote-footer">
+					<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+					<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+				</footer>
+			{% elseif  a.note == 3 %}
+			<footer class="blockquote-footer">
+				<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+				<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+				<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			</footer>
+		{% elseif  a.note == 4 %}
+		<footer class="blockquote-footer">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+		</footer>
+	{% else %}
+		<footer class="blockquote-footer">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+		</footer>
+	{% endif %}
+</blockquote></div></div>{% endfor %}{% endblock %}
