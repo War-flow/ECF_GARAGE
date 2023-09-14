@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil!{% endblock %}
+{% block title %}Accueil!
+{% endblock %}
 
 {% block body %}
 	<p class="d-inline-flex gap-1">
@@ -20,4 +21,26 @@
 					</div>
 				</div>
 			</div>
-{% endblock %}
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% for voiture in voitures %}
+					<div class="col">
+						<div class="card h-100">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">{{voiture.name}}</h5>
+							</div>
+							<ul class="list-group list-group-flush">
+							
+								<li class="list-group-item">Année : {{voiture.year}} </li>
+								<li class="list-group-item">Carburant : {{voiture.fuel}} </li>
+								<li class="list-group-item">Kilométrage : {{voiture.miles}} Km</li>
+								<li class="list-group-item fw-bold">Prix : {{voiture.price}} €</li>
+							</ul>
+							<div class="card-body">
+								<a href="#" class="card-link">Détail</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endblock %}

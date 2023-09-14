@@ -3,8 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VoituresRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VoituresRepository::class)]
@@ -16,28 +15,37 @@ class Voitures
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Name = null;
+    private ?string $name = null;
 
     #[ORM\Column]
-    private ?int $Price = null;
+    private ?int $price = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $year = null;
+    private ?int $year = null;
 
     #[ORM\Column]
-    private ?int $Mile = null;
+    private ?int $miles = null;
 
-    #[ORM\OneToMany(mappedBy: 'Voiture', targetEntity: Detail::class)]
-    private Collection $details;
+    #[ORM\Column(length: 255)]
+    private ?string $Op1 = null;
 
-    #[ORM\OneToMany(mappedBy: 'Voiture_id', targetEntity: Option::class)]
-    private Collection $options;
+    #[ORM\Column(length: 255)]
+    private ?string $Op2 = null;
 
-    public function __construct()
-    {
-        $this->details = new ArrayCollection();
-        $this->options = new ArrayCollection();
-    }
+    #[ORM\Column(length: 255)]
+    private ?string $Op3 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Feat1 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Feat2 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Feat3 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Fuel = null;
 
     public function getId(): ?int
     {
@@ -46,108 +54,132 @@ class Voitures
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getPrice(): ?int
     {
-        return $this->Price;
+        return $this->price;
     }
 
-    public function setPrice(int $Price): static
+    public function setPrice(int $price): static
     {
-        $this->Price = $Price;
+        $this->price = $price;
 
         return $this;
     }
 
-    public function getYear(): ?\DateTimeImmutable
+    public function getYear(): ?int
     {
         return $this->year;
     }
 
-    public function setYear(\DateTimeImmutable $year): static
+    public function setYear(int $year): static
     {
         $this->year = $year;
 
         return $this;
     }
 
-    public function getMile(): ?int
+    public function getMiles(): ?int
     {
-        return $this->Mile;
+        return $this->miles;
     }
 
-    public function setMile(int $Mile): static
+    public function setMiles(int $miles): static
     {
-        $this->Mile = $Mile;
+        $this->miles = $miles;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Detail>
-     */
-    public function getDetails(): Collection
+    public function getOp1(): ?string
     {
-        return $this->details;
+        return $this->Op1;
     }
 
-    public function addDetail(Detail $detail): static
+    public function setOp1(string $Op1): static
     {
-        if (!$this->details->contains($detail)) {
-            $this->details->add($detail);
-            $detail->setVoiture($this);
-        }
+        $this->Op1 = $Op1;
 
         return $this;
     }
 
-    public function removeDetail(Detail $detail): static
+    public function getOp2(): ?string
     {
-        if ($this->details->removeElement($detail)) {
-            // set the owning side to null (unless already changed)
-            if ($detail->getVoiture() === $this) {
-                $detail->setVoiture(null);
-            }
-        }
+        return $this->Op2;
+    }
+
+    public function setOp2(string $Op2): static
+    {
+        $this->Op2 = $Op2;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Option>
-     */
-    public function getOptions(): Collection
+    public function getOp3(): ?string
     {
-        return $this->options;
+        return $this->Op3;
     }
 
-    public function addOption(Option $option): static
+    public function setOp3(string $Op3): static
     {
-        if (!$this->options->contains($option)) {
-            $this->options->add($option);
-            $option->setVoitureId($this);
-        }
+        $this->Op3 = $Op3;
 
         return $this;
     }
 
-    public function removeOption(Option $option): static
+    public function getFeat1(): ?string
     {
-        if ($this->options->removeElement($option)) {
-            // set the owning side to null (unless already changed)
-            if ($option->getVoitureId() === $this) {
-                $option->setVoitureId(null);
-            }
-        }
+        return $this->Feat1;
+    }
+
+    public function setFeat1(string $Feat1): static
+    {
+        $this->Feat1 = $Feat1;
+
+        return $this;
+    }
+
+    public function getFeat2(): ?string
+    {
+        return $this->Feat2;
+    }
+
+    public function setFeat2(string $Feat2): static
+    {
+        $this->Feat2 = $Feat2;
+
+        return $this;
+    }
+
+    public function getFeat3(): ?string
+    {
+        return $this->Feat3;
+    }
+
+    public function setFeat3(string $Feat3): static
+    {
+        $this->Feat3 = $Feat3;
+
+        return $this;
+    }
+
+    public function getFuel(): ?string
+    {
+        return $this->Fuel;
+    }
+
+    public function setFuel(string $Fuel): static
+    {
+        $this->Fuel = $Fuel;
 
         return $this;
     }
