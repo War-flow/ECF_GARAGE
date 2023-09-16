@@ -26,7 +26,7 @@ class VoitureFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $max = 'now';
-        for ($pls = 1; $pls <= 10; $pls++) {
+        for ($pls = 1; $pls <= 20; $pls++) {
             $Voitures = new Voitures();
             $Voitures->setName($this->faker->text(5));
             $Voitures->setPrice($this->faker->numberBetween(2000, 25000));
