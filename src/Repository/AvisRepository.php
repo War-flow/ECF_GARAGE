@@ -21,6 +21,17 @@ class AvisRepository extends ServiceEntityRepository
         parent::__construct($registry, Avis::class);
     }
 
+
+
+    public function paginationAvis()
+    {
+         return $this->createQueryBuilder('a')
+ 
+             ->orderBy('a.id', 'ASC')
+            ->getQuery()
+        ;
+     }
+
 //    /**
 //     * @return Avis[] Returns an array of Avis objects
 //     */

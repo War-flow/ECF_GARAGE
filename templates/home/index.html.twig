@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil!
-{% endblock %}
-
 {% block body %}
 	<p class="d-inline-flex gap-1">
 		<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="true" aria-controls="multiCollapseExample1 multiCollapseExample2">Nos Services</button>
@@ -17,12 +14,12 @@
 						</p>
 						{% for service in services %}
 							<p class="list-group-item list-group-item-action list-group-item-secondary bts">{{service.title}}</p>
-						{% endfor %}
+						{% endfor %}f
 					</div>
 				</div>
 			</div>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
-				{% for voiture in voitures %}
+				{% for voiture in pagination %}
 					<div class="col">
 						<div class="card h-100">
 							<img src="..." class="card-img-top" alt="...">
@@ -30,17 +27,26 @@
 								<h5 class="card-title">{{voiture.name}}</h5>
 							</div>
 							<ul class="list-group list-group-flush">
-							
-								<li class="list-group-item">Année : {{voiture.year}} </li>
-								<li class="list-group-item">Carburant : {{voiture.fuel}} </li>
-								<li class="list-group-item">Kilométrage : {{voiture.miles}} Km</li>
-								<li class="list-group-item fw-bold">Prix : {{voiture.price}} €</li>
+								<li class="list-group-item">Année :
+									{{voiture.year}}
+								</li>
+								<li class="list-group-item">Carburant :
+									{{voiture.fuel}}
+								</li>
+								<li class="list-group-item">Kilométrage :
+									{{voiture.miles}}
+									Km</li>
+								<li class="list-group-item fw-bold">Prix :
+									{{voiture.price}}
+									€</li>
 							</ul>
 							<div class="card-body">
-								<a href="#" class="card-link">Détail</a>
+								<a href="{{path('app_detail', {slug: voiture.id})}}" class="card-link">Détail</a>
 							</div>
 						</div>
 					</div>
+					
 				{% endfor %}
-			</div>
-		{% endblock %}
+				{{ knp_pagination_render(pagination) }}
+		</div>
+	{% endblock %}

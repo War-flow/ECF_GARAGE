@@ -2,45 +2,63 @@
 
 {% block title %}Vos Avis!
 {% endblock %}
-
 {% block body %}
-{% for a in avis %}
-	<div class="card">
-		<div class="card-header">
-			{{a.name}}
+	{% for a in avis %}
+	{% if a.validation == 'validé' %}
+		<div class="card">
+			<div class="card-header">
+				{{a.name}}
+			</div>
+			<div class="card-body">
+				<blockquote class="blockquote mb-0">
+					<p>{{a.message}}</p>
+					{% if a.note == 1 %}
+						<footer class="blockquote-footer">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+						</footer>
+					{% elseif  a.note == 2 %}
+						<footer class="blockquote-footer">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+						</footer>
+					{% elseif  a.note == 3 %}
+						<footer class="blockquote-footer">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+						</footer>
+					{% elseif  a.note == 4 %}
+						<footer class="blockquote-footer">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+						</footer>
+					{% else %}
+						<footer class="blockquote-footer">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+							<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+						</footer>
+					{% endif %}
+					{% endif %}
+				</blockquote>
+			</div>
 		</div>
-		<div class="card-body">
-			<blockquote class="blockquote mb-0">
-				<p>{{a.message}}</p>
-				{% if a.note == 1 %}
-					<footer class="blockquote-footer">
-						<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-					</footer>
-				{% elseif  a.note == 2 %}
-				<footer class="blockquote-footer">
-					<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-					<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-				</footer>
-			{% elseif  a.note == 3 %}
-			<footer class="blockquote-footer">
-				<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-				<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-				<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			</footer>
-		{% elseif  a.note == 4 %}
-		<footer class="blockquote-footer">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-		</footer>
-	{% else %}
-		<footer class="blockquote-footer">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-			<img src="{{ asset('style/upload/star-fill.svg' )}} " alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-		</footer>
-	{% endif %}
-</blockquote></div></div>{% endfor %}{% endblock %}
+	{% endfor %}
+	{{ knp_pagination_render(avis) }}
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>Laissez un avis</h1>
+				{{ form_start(form) }}
+				{{ form_row(form.Name) }}
+				{{ form_row(form.Message) }}
+				{{ form_row(form.Note) }}
+				<button type="submit" class="btn mt-3">Envoyer</button>
+				{{ form_end(form) }}
+			</section>
+		</main>
+	{% endblock %}

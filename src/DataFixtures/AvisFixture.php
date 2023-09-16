@@ -31,7 +31,7 @@ class AvisFixture extends Fixture
             $avis->setName($this->faker->text(5));
             $avis->setMessage($this->faker->sentence(5));
             $avis->setNote($this->faker->numberBetween(1, 5));
-            $avis->setValidation(true);
+            $avis->setValidation('validé');
             $manager->persist($avis);
         }
         $manager->flush();

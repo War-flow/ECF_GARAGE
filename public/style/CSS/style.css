@@ -78,6 +78,42 @@
   background-image: url(../upload/Cars.jpg);
 }
 
+
+.last {
+  padding: 5px;
+  
+} 
+.current {
+  padding: 5px;
+  
+}
+.next {
+  padding: 5px;
+  
+}
+.page {
+  padding: 5px;
+  
+}
+.previous {
+  padding: 5px;
+  
+}
+.first {
+  padding: 5px;
+  
+}
+.pagination {  
+  color:#000000;
+  font-size: 25px;
+  margin-right: 50px;
+  padding-left: 25px;
+  padding-bottom: 25px;
+  text-size-adjust: 15px;
+  word-spacing: 10px;
+  
+}
+
 @media only screen and (min-device-width: 400px) {
   .img {
     background-image: url(../upload/Cars.jpg);

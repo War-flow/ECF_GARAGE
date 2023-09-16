@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="{{ asset('style/CSS/bootstrap.min.css') }}"> {% block stylesheets %}{% endblock %}
-		<link rel="stylesheet" href="{{ asset('style/CSS/Style.css') }}">
+		<link rel="stylesheet" href="{{ asset('style/CSS/style.css') }}">
 
 
 		<script src="{{ asset('style/JS/bootstrap.min.js') }}" defer></script>
@@ -35,12 +35,31 @@
 							<li class="nav-item">
 								<a class="nav-link active bt2 rounded-pill" aria-current="page" href="{{path('app_avis')}}">Avis</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link active bt2 rounded-pill" aria-current="page" href="{{path('app_contact')}}">Contact</a>
+							</li>
 						</ul>
 						<ul class="navbar nav ms-auto mb-2 mb-lg-0">
 							{% if app.user %}
 								{% if is_granted('ROLE_ADMIN') %}
-									<li
-										class="nav-item">{# <a class="nav-link nav-link bt1 m-3 fs-2 fw-bold" href="{{path('admin_index')}}">Administration</a>#}
+									{#<li
+										class="nav-item"><a class="nav-link nav-link bt1 m-3 fs-2 fw-bold" href="{{path('admin_index')}}">Administration</a>
+									</li> #}
+									<li class="nav-item">
+										<a class="nav-link active bt2 rounded-pill" href="{{path('admin_app_register')}}">Inscription</a>
+																			<li class="nav-item">
+										<a class="nav-link active bt2 rounded-pill" href="{{path('admin_app_validation')}}">Validation</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active bt2 rounded-pill" href="{{path('admin_app_voiture')}}">Ajouter un véhicule</a>
+									</li>
+									</li>
+								{% elseif is_granted('ROLE_USER') %}
+									<li class="nav-item">
+										<a class="nav-link active bt2 rounded-pill" href="{{path('app_validation')}}">Validation</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active bt2 rounded-pill" href="{{path('app_voiture')}}">Ajouter un véhicule</a>
 									</li>
 								{% endif %}
 								<img src="{{asset('style/upload/croix-cercle.svg')}}" alt="" width="24" height="24">
@@ -51,44 +70,47 @@
 							{% endif %}
 						</ul>
 					</div>
+					{% include "_partials/_flash.html.twig" %}
 				</body>
 			</html>
 		</body>
 	</html>
 </div></nav>{% endblock %}{% block body %}{% endblock %}{% block footer %}<footer>
 <div class="d-inline-flex gap-1">
-  <button class="btn btn-primary " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Horaires
-  </button>
+	<button class="btn btn-primary " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		Horaires
+	</button>
 </div>
 <div class="collapse" id="collapseExample">
-  <div class="card card-body">
-	{% for footer in footers.getfooter %}
-		<ul>
-	{# Boucle footer horaire jours #}
-	<li class="list-group-item txt text-center border-1 fw-bold container-fluid">
-		<h3>{{footer.days}}</h3>
-	</li>
+	<div class="card card-body">
+		{% for footer in footers.getfooter %}
+			<ul>
+				{# Boucle footer horaire jours #}
+				<li class="list-group-item txt text-center border-1 fw-bold container-fluid">
+					<h3>{{footer.days}}</h3>
+				</li>
 
-	{# Boucle footer horaire matin #}
-	{% if footer.AMHO == 0 or footer.AMHC == 0 %}
-		<li class="list-group-item txt text-center border-2 container-fluid">
-			Matin : Fermé</li>
-	{% else  %}
-		<li class="list-group-item txt text-center border-2 container-fluid">
-			Matin :
-			{{footer.AMHO}}h - {{footer.AMHC}}h</li>
-	{% endif %}
+				{# Boucle footer horaire matin #}
+				{% if footer.AMHO == 0 or footer.AMHC == 0 %}
+					<li class="list-group-item txt text-center border-2 container-fluid">
+						Matin : Fermé</li>
+				{% else  %}
+					<li class="list-group-item txt text-center border-2 container-fluid">
+						Matin :
+						{{footer.AMHO}}h -
+						{{footer.AMHC}}h</li>
+				{% endif %}
 
-	{# Boucle footer horaire soir #}
-	{% if footer.PMHO == 0 or footer.PMHC == 0 %}
-		<li class="list-group-item txt text-center border-2 container-fluid">
-			Matin : Fermé</li>
-	{% else  %}
-		<li class="list-group-item txt text-center border-2 container-fluid">Soir :
-			{{footer.PMHO}}h - {{footer.PMHC}}h</li>
-	{% endif %}
-		</ul>
-	{% endfor %}
-  </div>
+				{# Boucle footer horaire soir #}
+				{% if footer.PMHO == 0 or footer.PMHC == 0 %}
+					<li class="list-group-item txt text-center border-2 container-fluid">
+						Matin : Fermé</li>
+				{% else  %}
+					<li class="list-group-item txt text-center border-2 container-fluid">Soir :
+						{{footer.PMHO}}h -
+						{{footer.PMHC}}h</li>
+				{% endif %}
+			</ul>
+		{% endfor %}
+	</div>
 </div></footer>{% endblock %}</body></html>

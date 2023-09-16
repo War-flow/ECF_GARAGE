@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AvisRepository::class)]
 class Avis
 {
+    
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -23,8 +25,8 @@ class Avis
     #[ORM\Column]
     private ?int $Note = null;
 
-    #[ORM\Column]
-    private ?bool $Validation = null;
+    #[ORM\Column (nullable: true)]
+    private ?string $Validation = null;
 
     public function getId(): ?int
     {
@@ -67,12 +69,12 @@ class Avis
         return $this;
     }
 
-    public function isValidation(): ?bool
+    public function getValidation(): ?string
     {
         return $this->Validation;
     }
 
-    public function setValidation(bool $Validation): static
+    public function setValidation(string $Validation): static
     {
         $this->Validation = $Validation;
 

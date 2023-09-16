@@ -21,6 +21,7 @@ class Userfixtures extends Fixture
     {
          //On crée le compte administateur
         $admin = new Users();
+
         $admin->setEmail('quai_hote@demo.fr');
         $admin->setPassword($this->passwordEncoder->hashPassword($admin,'lopo97300'));
         $admin->setRoles(['ROLE_ADMIN']);
