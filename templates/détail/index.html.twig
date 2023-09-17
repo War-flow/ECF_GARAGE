@@ -66,7 +66,20 @@
 					<li class="list-group-item">{{voiture.op2}}</li>
 					<li class="list-group-item">{{voiture.op3}}</li>
 				</ul>
-			</div>
+			</div
 		</div>
 	</p>
-</div></div></div>{% endfor %}{% endblock %}
+</div></div></div>
+{{ form_start(addForm)}}
+{{ form_row(addForm.Subject, {'value' : slug.name}) }}
+{{ form_row(addForm.Lastname) }}
+{{ form_row(addForm.Firstname) }}
+{{ form_row(addForm.Address) }}
+{{ form_row(addForm.ZipCode) }}
+{{ form_row(addForm.City) }}
+{{ form_row(addForm.Mail) }}
+{{ form_row(addForm.Phone) }}
+{{ form_row(addForm.Message) }}
+<button type="submit" class="btn btn-primary mb-3">{{ button_label|default('Envoyer') }}</button>
+{{ form_end(addForm) }}{% endfor %}
+{% endblock %}

@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/DEV/htdocs/app/ECF_GARAGE/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/DEV/htdocs/app/ECF_GARAGE/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<div class="row row-cols-1 row-cols-md-4 g-4">
+		{% for contact in pagination %}
+			<div class="col">
+				<div class="card bg-body-secondary">
+					<div class="card-body">
+						<div class="col">
+							<h5 class="card-title fw-bold">{{contact.subject}}</h5>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Nom :
+								{{contact.lastname}}</li>
+							<li class="list-group-item">Prénom :
+								{{contact.firstname}}</li>
+							<li class="list-group-item">Adresse :
+								{{contact.address}}</li>
+							<li class="list-group-item">Email :
+								{{contact.mail}}</li>
+							<li class="list-group-item">Télephone :
+								{{contact.phone}}</li>
+							<li class="list-group-item">Code Postal :
+								{{contact.zipcode}}</li>
+							<li class="list-group-item">Ville :
+								{{contact.city}}</li>
+							<li class="list-group-item">Message :
+								{{contact.message}}</li>
+						</ul>
+						<td>
+							<button class="btn btn-danger">
+								<a href="{{ path('app_user_delete',{id: contact.id})}}">Supprimer</a>
+							</button>
+						</td>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{{ knp_pagination_render(pagination) }}
 {% endblock %}
+{% block footer %}{% endblock %}
