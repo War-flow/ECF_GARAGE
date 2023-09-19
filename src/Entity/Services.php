@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ServicesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ServicesRepository::class)]
 class Services
@@ -14,6 +15,13 @@ class Services
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 5,
+        max: 255,
+        minMessage: 'Le champ doit faire au moins {{ limit }}',
+        maxMessage: 'Le champ ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $title = null;
 
     public function getId(): ?int

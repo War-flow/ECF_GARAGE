@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HorairesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: HorairesRepository::class)]
 class Horaires
@@ -17,15 +18,23 @@ class Horaires
     private ?string $Days = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero]
+    #[Assert\LessThanOrEqual(23, message: 'le nombre doit être egale ou infériereur à 23')]
     private ?int $AMHO = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message: 'le nombre ne peux pas être négative')]
+    #[Assert\LessThanOrEqual(23, message: 'le nombre doit être egale ou infériereur à 23')]
     private ?int $AMHC = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message: 'le nombre ne peux pas être négative')]
+    #[Assert\LessThanOrEqual(23, message: 'le nombre doit être egale ou infériereur à 23')]
     private ?int $PMHO = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message: 'le nombre ne peux pas être négative')]
+    #[Assert\LessThanOrEqual(23, message: 'le nombre doit être egale ou infériereur à 23')]
     private ?int $PMHC = null;
 
     public function getId(): ?int

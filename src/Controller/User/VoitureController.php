@@ -76,13 +76,13 @@ class VoitureController extends AbstractController
             $em->persist($voitures);
             $em->flush();
 
-            $this->addFlash('success', 'Menu modifier avec succès');
+            $this->addFlash('success', 'Véhicule modifier avec succès');
 
             //On  rediriger
             return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('admin/menu/edit.html.twig', compact('addForm'));
+        return $this->render('voiture/index.html.twig', compact('addForm'));
     }
 
     #[Route('/delete/{id}', name: 'delete')]
@@ -95,7 +95,7 @@ class VoitureController extends AbstractController
         $em->remove($voiture);
         $em->flush();
 
-        $this->addFlash('success', 'Menu supprimé avec succès');
+        $this->addFlash('success', 'Véhicule supprimé avec succès');
 
         //On  rediriger
         return $this->redirectToRoute('app_home');

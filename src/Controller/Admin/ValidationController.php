@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/validation', name: 'admin_app_')]
+#[Route('/admin', name: 'admin_app_')]
 class ValidationController extends AbstractController
 {
-    #[Route('/', name: 'validation')]
+    #[Route('/validation', name: 'validation')]
     public function index(AvisRepository $avisRepository): Response
     {
 
@@ -36,7 +36,7 @@ class ValidationController extends AbstractController
         $avis->setValidation('validé');
         $em->flush();
 
-        $this->addFlash('success', 'Avis supprimé avec succès');
+        $this->addFlash('success', 'Avis validé avec succès');
 
         //On  rediriger
         return $this->redirectToRoute('app_validation');

@@ -5,8 +5,8 @@ namespace App\Entity;
 use App\Repository\VoituresRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VoituresRepository::class)]
 class Voitures
@@ -17,33 +17,86 @@ class Voitures
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 8,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $name = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message:'Le champ ne peut pas être négatif.')]
     private ?int $price = null;
 
     #[ORM\Column]
+    #[Assert\LessThanOrEqual(2023, message:'Année supérieur à 2023')]
+    #[Assert\GreaterThan(2000, message:'Année inférieur à 2000')]
     private ?int $year = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message:'Le champ ne peut pas être négatif.')]
     private ?int $miles = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $Op1 = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $Op2 = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $Op3 = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $Feat1 = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $Feat2 = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le champ doit être rempli.')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le titre doit faire au moins {{ limit }}',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }}'
+    )]
     private ?string $Feat3 = null;
 
     #[ORM\Column(length: 255)]

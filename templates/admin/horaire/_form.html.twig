@@ -1,0 +1,7 @@
+{{ form_start(addForm) }}
+{{ form_row(addForm.AMHO) }}
+{{ form_row(addForm.AMHC) }}
+{{ form_row(addForm.PMHO) }}
+{{ form_row(addForm.PMHC) }}
+<button type="submit" class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(addForm) }}

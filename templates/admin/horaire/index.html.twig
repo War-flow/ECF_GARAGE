@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class="row">
+			{% include "_partials/_adminnav.html.twig" %}
+			<main class="col-9 border border-blue bg-white p-2">
+				<h1>Administration des horaires</h1>
+				<table class="table-hover table align-middle table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Jour</th>
+							<th>Ouverture Matin</th>
+							<th>Fermeture Matin</th>
+							<th>Ouverture Soir</th>
+							<th>Fermeture Soir</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for horaire in horaires %}
+							<tr>
+								<td>{{ horaire.days }}</td>
+								<td>{{ horaire.AMHO }}</td>
+								<td>{{ horaire.AMHC }}</td>
+								<td>{{ horaire.PMHO }}</td>
+								<td>{{ horaire.PMHC }}</td>
+								<td>
+									<button class="btn btn-success">
+										<a href="{{ path('gestion_horaire_edit',{id: horaire.id})}}">Modifier</a>
+									</button>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</main>
+		</div>
+	</div>
+{% endblock %}

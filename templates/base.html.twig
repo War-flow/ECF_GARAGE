@@ -39,7 +39,8 @@
 						<ul class="navbar nav ms-auto mb-2 mb-lg-0">
 							{% if app.user %}
 								{% if is_granted('ROLE_ADMIN') %}
-									{#<li> class="nav-item"><a class="nav-link nav-link bt1 m-3 fs-2 fw-bold" href="{{path('admin_index')}}">Administration </a> </li> #}
+									<li class="nav-item">
+									<a class="nav-link active bt2 rounded-pill" href="{{path('app_admin_gestion')}}">Administration</a></li>
 									<li class="nav-item">
 										<a class="nav-link active bt2 rounded-pill" href="{{path('admin_app_register')}}">Inscription</a>
 									</li>
@@ -47,7 +48,7 @@
 										<a class="nav-link active bt2 rounded-pill" href="{{path('admin_app_validation')}}">Validation</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active bt2 rounded-pill" href="{{path('admin_app_voiture')}}">Ajouter un véhicule</a>
+										<a class="nav-link active bt2 rounded-pill" href="{{path('app_admin_add')}}">Ajouter un véhicule</a>
 									</li>
 								</li>
 							{% elseif is_granted('ROLE_USER') %}
