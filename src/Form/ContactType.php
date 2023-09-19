@@ -16,15 +16,15 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Subject', options: ['label' => 'Sujet',])
-            ->add('Lastname', options: ['label' => 'Nom',])
-            ->add('Firstname', options: ['label' => 'Prénom',])
-            ->add('Address', options: ['label' => 'Adresse',])
-            ->add('ZipCode',NumberType::class, options: ['label' => 'Code Postal',])
-            ->add('City', options: ['label' => 'Ville',])
-            ->add('Mail',EmailType::class,options: ['label' => 'Email', ])
-            ->add('Phone',TelType::class,options: ['label' => 'Téléphone',])
-            ->add('Message',TextareaType::class, options: ['label' => 'Message',]);
+            ->add('Subject', options: ['attr'=> ['class' => 'w-50'],'label' => 'Sujet',])
+            ->add('Lastname', options: ['attr'=> ['class' => 'w-50'],'label' => 'Nom',])
+            ->add('Firstname', options: ['attr'=> ['class' => 'w-50'],'label' => 'Prénom',])
+            ->add('Address', options: ['attr'=> ['class' => 'w-50'],'label' => 'Adresse',])
+            ->add('ZipCode',NumberType::class, options: ['attr'=> ['class' => 'w-50'],'label' => 'Code Postal',])
+            ->add('City', options: ['attr'=> ['class' => 'w-50'],'label' => 'Ville',])
+            ->add('Mail',EmailType::class,options: ['attr'=> ['class' => 'w-50'],'label' => 'Email', ])
+            ->add('Phone',TelType::class,options: ['attr'=> ['class' => 'w-50'],'label' => 'Téléphone',])
+            ->add('Message',TextareaType::class, options: ['attr'=> ['class' => 'w-50'],'label' => 'Message',]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

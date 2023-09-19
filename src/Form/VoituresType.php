@@ -5,7 +5,7 @@ namespace App\Form;
 use App\Entity\Voitures;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,7 +34,13 @@ class VoituresType extends AbstractType
             ->add('Op3', options: ['label' => 'Option N°3',])
             ->add('Feat1', options: ['label' => 'Caratéristique N°1',])
             ->add('Feat2', options: ['label' => 'Caratéristique N°2',])
-            ->add('Feat3', options: ['label' => 'Caratéristique N°3',]);
+            ->add('Feat3', options: ['label' => 'Caratéristique N°3',])
+            ->add('image', FileType::class, [
+                'label' => 'Format valider png, jpeg, webp',
+                'multiple' => true,
+                'mapped'=> false,
+                'required' =>false, 
+            ], );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

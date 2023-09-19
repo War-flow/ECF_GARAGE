@@ -22,7 +22,7 @@
 				{% for voiture in pagination %}
 					<div class="col">
 						<div class="card h-100">
-							<img src="..." class="card-img-top" alt="...">
+							<img src="{{asset('assets/upload/voitures/mini/250x250-' ~ voiture.images[0].name)}}" class="card-img-top" alt="Image non trouvée">
 							<div class="card-body">
 								<h5 class="card-title">{{voiture.name}}</h5>
 							</div>
@@ -41,7 +41,7 @@
 									€</li>
 							</ul>
 							<div class="card-body">
-								<a href="{{path('app_detail', {slug: voiture.id})}}" class="card-link">Détail</a>
+								<a href="{{path('app_detail', {slug: voiture.id})}}" class="card-link btn ">Détail</a>
 							</div>
 						</div>
 					</div>
