@@ -11,8 +11,6 @@ use Faker\Generator;
 class AvisFixture extends Fixture
 {
 
-    private $counters = 1;
-
     /**
      * var Generator
      */
@@ -26,12 +24,23 @@ class AvisFixture extends Fixture
     public function load(ObjectManager $manager): void
     {
         
+        // Genération de 10 faux avis avec Faker
         for ($pls = 1; $pls <= 10; $pls++) {
+
             $avis = new Avis();
+            
+            // Genération d'un faux nom taille max 5 lettre
             $avis->setName($this->faker->text(5));
+            
+            // Genération d'un faux message taille max 5 mots
             $avis->setMessage($this->faker->sentence(5));
+
+             // Genération d'une fausse note compris entre 1 et 5
             $avis->setNote($this->faker->numberBetween(1, 5));
+
+            // Genération d'une fausse valitation
             $avis->setValidation('validé');
+
             $manager->persist($avis);
         }
         $manager->flush();

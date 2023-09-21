@@ -10,7 +10,9 @@ class HoursFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // On crée les Horaires par défaut
+
+        //Genération des Horaires par défaut
+        
         $hours = $this->createHours(days: 'Lundi', AMHO:12, AMHC:14, PMHO:19, PMHC:22, manager :$manager);
         $this->createHours(days: 'Mardi', AMHO:12, AMHC:14, PMHO:19, PMHC:22, manager :$manager);
         $this->createHours(days: 'Mercredi', AMHO:0, AMHC:0, PMHO:0, PMHC:0, manager :$manager);

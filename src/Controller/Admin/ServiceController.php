@@ -26,7 +26,7 @@ class ServiceController extends AbstractController
     #[Route('/add', name: 'add')]
     public function add(Request $request, EntityManagerInterface $em): Response
     {
-        // On crée un "nouveau Plats"
+        // On crée un "nouveau Service"
         $service = new Services();
 
         // On crée le formulaire
@@ -79,7 +79,7 @@ class ServiceController extends AbstractController
     #[Route('/delete/{id}', name: 'delete')]
     public function delete(EntityManagerInterface $em, int $id): Response
     {
-        //On recupere id du plat
+        //On recupere id du service
         $service = $em->getRepository(Services::class)->find($id);
 
         // On supprime entité

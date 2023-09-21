@@ -19,11 +19,16 @@ class Userfixtures extends Fixture
     }
     public function load(ObjectManager $manager): void
     {
-         //On crée le compte administateur
+        //Generation du compte administateur
         $admin = new Users();
 
+        //Generation de l'email
         $admin->setEmail('quai_hote@demo.fr');
+
+        //Generation du mot de passe
         $admin->setPassword($this->passwordEncoder->hashPassword($admin,'lopo97300'));
+
+        //Attribution de Role
         $admin->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($admin);

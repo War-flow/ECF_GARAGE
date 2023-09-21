@@ -60,45 +60,4 @@ class VoitureController extends AbstractController
         return $this->render('voiture/index.html.twig', compact('addForm'));
     }
 
-    #[Route('/edit/{id}', name: 'edit')]
-    public function edit(Voitures $voitures, Request $request, EntityManagerInterface $em): Response
-    {
-        // On crée le formulaire
-        $addForm = $this->createForm(MenuFormType::class, $voitures);
-
-        //On traiter la requête du formulaire
-        $addForm->handleRequest($request);
-
-        // On vérifier si le formulaire est soumis et valide
-        if ($addForm->isSubmitted() && $addForm->isValid()) {
-
-            // On stock entité
-            $em->persist($voitures);
-            $em->flush();
-
-            $this->addFlash('success', 'Véhicule modifier avec succès');
-
-            //On  rediriger
-            return $this->redirectToRoute('app_home');
-        }
-
-        return $this->render('voiture/index.html.twig', compact('addForm'));
-    }
-
-    #[Route('/delete/{id}', name: 'delete')]
-    public function delete(EntityManagerInterface $em, int $id): Response
-    {
-        //On recupere id du menu
-        $voiture = $em->getRepository(Voitures::class)->find($id);
-
-        // On supprime entité
-        $em->remove($voiture);
-        $em->flush();
-
-        $this->addFlash('success', 'Véhicule supprimé avec succès');
-
-        //On  rediriger
-        return $this->redirectToRoute('app_home');
-    }
-
 }

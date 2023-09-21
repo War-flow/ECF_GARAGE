@@ -23,7 +23,7 @@ class AvisController extends AbstractController
             $request->query->get('page', 1),
             5
         );
-         // On crée un "nouveau menus"
+         // On crée un Avis
          $avis = new Avis();
 
          // On crée le formulaire
@@ -41,7 +41,7 @@ class AvisController extends AbstractController
  
              $this->addFlash('success', 'Merci pour votre Commentaire');
  
-             //On  redirigerp$_io
+             //On  rediriger
              return $this->redirectToRoute('app_avis');
          }
 

@@ -22,7 +22,7 @@ class AvisRepository extends ServiceEntityRepository
     }
 
 
-
+// Trier des avis par id pour pour la pagination
     public function paginationAvis()
     {
          return $this->createQueryBuilder('a')

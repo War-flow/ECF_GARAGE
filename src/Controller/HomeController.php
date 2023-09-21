@@ -41,8 +41,10 @@ class HomeController extends AbstractController
 
         $voitures = $voituresRepository->findCarsPaginated($page, $slug->getId(), 4);
 
+        // On crée un Contact
         $contact = new Contact();
 
+        // generation du formulaire
         $addForm = $this->createForm(ContactType::class, $contact);
 
         $addForm->handleRequest($request);
