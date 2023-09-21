@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\FilterSearch;
 use App\Entity\Voitures;
 use App\Form\ContactType;
 use App\Repository\ServicesRepository;
 use App\Repository\VoituresRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,18 +18,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('', name: 'home')]
-    public function index(ServicesRepository $servicesRepository, VoituresRepository $voituresRepository, Request $request, PaginatorInterface $paginator): Response
+    public function index(ServicesRepository $servicesRepository, VoituresRepository $voituresRepository, Request $request): Response
     {
-        // Récuperation des véhicule dans la base 
-        $pagination = $paginator->paginate(
-            $voituresRepository->paginationHome(),
-            $request->query->get('page', 1),
-            9
-        );
+        // Récuperation des véhicules et des services dans la base 
 
+         // $data = new FilterSearch();
+        //  $form = $this->createForm(FilterSearch::class, $data);
+         // $form->handleRequest($request);
+         
         return $this->render('home/index.html.twig', [
             'services' => $servicesRepository->findBy([], []),
-            'pagination' => $pagination
+            'voitures' => $voituresRepository->findBy([], []),
+            // 'form' => $form->createView()
         ]);
     }
 

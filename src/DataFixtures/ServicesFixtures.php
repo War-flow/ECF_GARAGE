@@ -15,7 +15,7 @@ class ServicesFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $services = $this->createServices(title:'Démarrage et charge batterie',manager:$manager);
+        $services = $this->createServices(title:'Démarrage et recharge de batterie',manager:$manager);
         $this->createServices(title:'Entretien Auto - Révision Vidange',manager:$manager);
         $this->createServices(title:'Courroie de Distribution',manager:$manager);
         $this->createServices(title:'Réparation plastique auto',manager:$manager);

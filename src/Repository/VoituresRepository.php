@@ -73,14 +73,11 @@ class VoituresRepository extends ServiceEntityRepository
         }
     }
 
-   public function paginationHome()
-   {
-        return $this->createQueryBuilder('v')
-
-            ->orderBy('v.id', 'ASC')
-           ->getQuery()
-       ;
-    }
+    /**
+     * Récupère les produits en lien avec une recherche
+     * @return Voitures[]
+     */
+    
 
 //    public function findOneBySomeField($value): ?Voitures
 //    {

@@ -9,44 +9,22 @@
 			<div class="collapse multi-collapse" id="multiCollapseExample1">
 				<div class="card card-body">
 					<div class="list-group">
-						<p class="list-group-item list-group-item-action bt2" aria-current="true" disabled>
-							RÉPARATION ET ENTRETIEN
-						</p>
 						{% for service in services %}
 							<p class="list-group-item list-group-item-action list-group-item-secondary bts">{{service.title}}</p>
 						{% endfor %}
 					</div>
 				</div>
 			</div>
-			<div class="row row-cols-1 row-cols-md-3 g-4">
-				{% for voiture in pagination %}
-					<div class="col">
-						<div class="card h-100">
-							<img src="{{asset('assets/upload/voitures/mini/250x250-' ~ voiture.images[0].name)}}" class="card-img-top" alt="Image non trouvée">
-							<div class="card-body">
-								<h5 class="card-title">{{voiture.name}}</h5>
-							</div>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Année :
-									{{voiture.year}}
-								</li>
-								<li class="list-group-item">Carburant :
-									{{voiture.fuel}}
-								</li>
-								<li class="list-group-item">Kilométrage :
-									{{voiture.miles}}
-									Km</li>
-								<li class="list-group-item fw-bold">Prix :
-									{{voiture.price}}
-									€</li>
-							</ul>
-							<div class="card-body">
-								<a href="{{path('app_detail', {slug: voiture.id})}}" class="card-link btn ">Détail</a>
-							</div>
-						</div>
+			<div class="container">
+				<div class="row">
+					<div class="jumbotron">
+				 {# {% include 'home/_filter.html.twig' with {form: form} only %} #}
 					</div>
-					
-				{% endfor %}
-				{{ knp_pagination_render(pagination) }}
-		</div>
-	{% endblock %}
+					<div class="col-md-9 card-group">			
+							{% for voiture in voitures %}
+								{% include 'home/_voitures.html.twig' with {voiture: voiture} only %}
+							{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endblock %}
